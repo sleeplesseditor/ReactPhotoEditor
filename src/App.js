@@ -5,9 +5,10 @@ import SidebarItem from './components/SideBarItem';
 import { DEFAULT_OPTIONS } from './components/Options';
 
 function App() {
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(0)
-  const [options, setOptions] = useState(DEFAULT_OPTIONS)
-  const selectedOption = options[selectedOptionIndex]
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
+  const [options, setOptions] = useState(DEFAULT_OPTIONS);
+  const [image, setImage] = useState();
+  const selectedOption = options[selectedOptionIndex];
 
   function handleSliderChange({ target }) {
     setOptions(prevOptions => {
@@ -23,12 +24,19 @@ function App() {
       return `${option.property}(${option.value}${option.unit})`
     })
 
-    return { filter: filters.join(' ') }
+    return { 
+      filter: filters.join(' ')
+    }
   }
+
+  // <img className="main-image" src={URL.createObjectURL(image)} alt="" style={getImageStyle()} /> 
 
   return (
     <div className="container">
-      <div className="main-image" style={getImageStyle()} />
+      {console.log('IMAGE', image)}
+      {/* <div className="main-image" style={getImageStyle()} /> */}
+      {image ? image && <img className="main-image" src={URL.createObjectURL(image)} alt="" style={getImageStyle()} />   : null}
+      <input aria-label="image file select" className="custom-file-input" type="file" onChange={(e) => setImage(e.target.files?.item(0))} />
       <div className="sidebar">
         {options.map((option, index) => {
           return (
