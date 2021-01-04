@@ -18,10 +18,14 @@ body {
   background-color: #DADADA;
 }
 
+.image-container {
+  height: 100vh;
+}
+
 .main-image {
   grid-area: image;
   width: 60%;
-  height: 100%;
+  height: 65%;
   margin: 1rem 3rem;
   background-position: top center;
   background-size: contain;

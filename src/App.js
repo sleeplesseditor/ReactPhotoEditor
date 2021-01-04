@@ -29,14 +29,18 @@ function App() {
     }
   }
 
-  // <img className="main-image" src={URL.createObjectURL(image)} alt="" style={getImageStyle()} /> 
-
   return (
     <div className="container">
-      {console.log('IMAGE', image)}
-      {/* <div className="main-image" style={getImageStyle()} /> */}
-      {image ? image && <img className="main-image" src={URL.createObjectURL(image)} alt="" style={getImageStyle()} />   : null}
-      <input aria-label="image file select" className="custom-file-input" type="file" onChange={(e) => setImage(e.target.files?.item(0))} />
+      <div className="image-container">
+        {image ? image && <img className="main-image" src={URL.createObjectURL(image)} alt="" style={getImageStyle()} />   : null}
+        <input aria-label="image file select" className="custom-file-input" type="file" onChange={(e) => setImage(e.target.files?.item(0))} />
+        <Slider
+          min={selectedOption.range.min}
+          max={selectedOption.range.max}
+          value={selectedOption.value}
+          handleChange={handleSliderChange}
+        />
+      </div>
       <div className="sidebar">
         {options.map((option, index) => {
           return (
@@ -49,12 +53,6 @@ function App() {
           )
         })}
       </div>
-      <Slider
-        min={selectedOption.range.min}
-        max={selectedOption.range.max}
-        value={selectedOption.value}
-        handleChange={handleSliderChange}
-      />
     </div>
   )
 }
