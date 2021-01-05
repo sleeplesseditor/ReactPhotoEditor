@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.scss';
+import Header from './components/Header';
 import Slider from './components/Slider'
 import SidebarItem from './components/SideBarItem';
 import { DEFAULT_OPTIONS } from './components/Options';
@@ -30,8 +31,11 @@ function App() {
   }
 
   return (
+    <>
+    <Header title="React Image Editor" />
     <div className="container">
       <div className="image-container">
+        {/* REVISE TO CANVAS SELECT BUTTON IDEA */}
         {image ? image && <img className="main-image" src={URL.createObjectURL(image)} alt="" style={getImageStyle()} />   : null}
         <input aria-label="image file select" className="custom-file-input" type="file" onChange={(e) => setImage(e.target.files?.item(0))} />
         <Slider
@@ -42,6 +46,7 @@ function App() {
         />
       </div>
       <div className="sidebar">
+        {/* REVISE TO ACCORDION SETUP WITH SLIDER INSIDE*/}
         {options.map((option, index) => {
           return (
             <SidebarItem
@@ -54,6 +59,7 @@ function App() {
         })}
       </div>
     </div>
+    </>
   )
 }
 

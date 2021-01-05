@@ -19,7 +19,8 @@ body {
 }
 
 .image-container {
-  height: 100vh;
+  height: 85vh;
+  margin-top: 4rem;
 }
 
 .main-image {
@@ -49,6 +50,10 @@ body {
   padding: 1rem;
   position: relative;
   transition: background-color 150ms;
+
+  &:nth-child(1) {
+    margin-top: 3.5rem;
+  }
 }
 
 .sidebar-item:hover, .sidebar-item:focus {
